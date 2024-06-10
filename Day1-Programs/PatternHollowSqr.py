@@ -10,6 +10,5 @@ def Hollow_Sqaure(n: int):
             print("*",end=" ")
         print()
 
-# Example usage:
 n=int(input("Enter the number: "))
 print(Hollow_Sqaure(n))

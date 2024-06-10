@@ -1,0 +1,107 @@
+Day -3
+-----------------------------------------------------------------------------------------
+1)differnce btw stack area and heap area
+stack area -> objects decided before the runtime 
+heap -> cannot guess whether the objects are created or not , which is decided at runtime
+*All the memory allocation , its dynamic or not always allocated in the Runtime only.
+*objects are created in the stack area inside the frame of the function.
+
+-----------------------------------------------------------------------------------------
+
+2)why the index starts from the Zero? 
+*the array it behaves as pointer
+if data type is double , its address it double*
+array[0] -> *(array + 0) ->*(1001 + 1)
+when functions are used via an objects it is called as objects eg
+for the big data - multithreading it divides into equals no of tasks and runs parallely
+ 
+-----------------------------------------------------------------------------------------
+
+1)LINEAR_SEARCH
+-----------------------------------------------------------------------------------------
+
+2)BINARY_SEARCH
+You have to use the Array itself (contigious Memory location)
+Elements in the data structure has to be sorted.
+
+Algorithm Binary_search
+Assume al the N is the size of the DS are in order 
+Reach the mid Poistion 
+check if the mude element is the search element
+if yes , stop the search and return the position 
+if not , check if the seach area is the 1st half or the second half and set it
+set it
+continue with step1  
+
+Assume the 1st index is low=0
+Assume the 1st index is last=n-1( n is the size of the Ds)
+
+step1 : mid( low + high ) //2 ( integer divsion)
+if array[mid] == search element then:
+return mid
+elif searchElement  search Element < array[mid] then:
+high= mid-1
+else:
+low= mid+1
+
+
+let x be the number of iterations
+number of elements in the 1st iterations  =  n 
+.
+.
+.
+.
+number of elements in the 2nd iteration  = n//2
+.
+.
+.
+.
+number of elements in the 3nd iteration  = n//4 its half
+.
+.
+.
+.
+number of elements in the 3nd iteration  = n//8 its half
+.
+-----------------------------------------------------------------------------------------
+
+its the same as of the 2^0=1( power of the iteration in the last search) 
+2^1=2( power of the iteration in the last - 1  )
+2^2=4( power of the iteration in the last - 2  )
+n=2^x
+x = logbase2(n)
+BCE(Binary_search)=O(logn)
+WCE(Binary_search)=O(log2n)
+
+f1() root   -------------->p1
+f2() cubeRoot ------------->p2
+f3() both
+(even though f3() solves both  p1 uses f1 to solve the root becus it efficent then p3  SRP method)
+High cohession ->> solving only one problem 
+low "...." -> single solution solving more than one problem 
+
+--------------------------------------------------------------------------------
+InsertionSort
+->Decrease And Conquer Technique(decreasing the complexity)
+->Since a one element Array is already Sorted
+->We assume the 1st element in the given array is in sorted array and rest of the rest the elements are in unsorted array.
+->so we just have to take 1 element at the time at a time from the unsorted array and put it into the sorted array 
+->for this we have to make the place for the new element in the sorted array aand hence we ma have to Shift the elements in the sorted array.
+
+
+the number is:
+23    44  12  9   3   31  23    17  29  
+23  44
+3   9   12  17  23  23  29  31  44
+
+
+for i from 1 to n-1 do:
+    element= array[i]
+    j=i-1
+    while j >= 0 or element <= array[j] do:
+        
+
+
+
+
+
