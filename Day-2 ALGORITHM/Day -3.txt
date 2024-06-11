@@ -81,7 +81,7 @@ High cohession ->> solving only one problem
 low "...." -> single solution solving more than one problem 
 
 --------------------------------------------------------------------------------
-InsertionSort
+InsertionSort ( CORE IS SHIFTING THE ELEMENT)
 ->Decrease And Conquer Technique(decreasing the complexity)
 ->Since a one element Array is already Sorted
 ->We assume the 1st element in the given array is in sorted array and rest of the rest the elements are in unsorted array.
@@ -92,16 +92,50 @@ InsertionSort
 the number is:
 23    44  12  9   3   31  23    17  29  
 23  44
-3   9   12  17  23  23  29  31  44
+3   9   12  17  23   23  29  31  44
 
 
 for i from 1 to n-1 do:
     element= array[i]
     j=i-1
-    while j >= 0 or element <= array[j] do:
-        
+    while j >= 0 and element <= array[j] do:   ( array out of bound is the runtime error)
+        array[j+1]=array[i]
+        j--   
+    array[j+1]=element       
 
 
+analysis:
+        23    44  12  9   3   31  23    17  29  
+                    2   3   4   1   2   4   2  no of shifts    ( 2D means the power is 2  it means it become the parabola)
+worst Case : O(n2)
+best Case: O(n) {becus the coping cases takes it O(n) }
 
 
+now for the desending order :
+ 
+3   9   12  17  23  23  29  31  44
+9  3
+12  9   3
+23  12  9   3
+23  23  12  9   3
+29  23  23  12  9   3
+..
 
+disadvantages: when the size is large it wont so efficiently
+
+
+--------------------------------------------------------------------------
+Quick Sort
+pivot element
+left should be the shortest elements 
+right should be the largest elements 
+
+i will run for the length of array
+j will  trace the exact position of pivot element
+the partitioned is Big O(n)
+quick sort log(n)
+so total is nlog(n)
+WCE o(n2)
+BCE nlog(n)
+
+array=[int(element)]

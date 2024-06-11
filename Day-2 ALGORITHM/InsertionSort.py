@@ -12,7 +12,7 @@ arr=list(map(int,input("Enter the elements").split(",")))
 InsertionSort(arr)
 print(arr)"""
 
-
+4,3,2,1,5,4,6,4,2,6
 def insertionSort(array):
     n = len(array)  
       
