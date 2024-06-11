@@ -1,0 +1,39 @@
+Bubble Sort
+23  44  12  9   3   31  23    17  29
+WCE : o(n2)
+BCE : o(n2)
+ACE : o(n2)
+We know the number of elements to be sorted ,w hich is n 
+hence the outer loop is for looping
+we know the number of element in the iunsorted array which is n-i elements , where i is the nu,ber of sorted elements
+hence the inner loop too would be for loop 
+
+for i from 0 to n-2 do:
+sorted = True #
+for j =0 to n-i-2 do :
+if array[j]> array[j+1] then:
+swap array[j] with array[j+1]
+sorted =False
+
+if sorted then:
+break
+
+code area : Code of program is stord here 
+
+3 jobs in C,C++
+sytax check
+translation
+interpretation   make for the spefic operting system
+
+2 jobs in java
+translation
+interpretation platform independent
+
+memory is allocated to the function 
+and memory is allocated to the variables
+
+stack local variales will be having tll end of life
+
+
+this,self -> in Java This is implicity created local refernces with the instances method which holds the refernces value of the object which is calling the object  
+

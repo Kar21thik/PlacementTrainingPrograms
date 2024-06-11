@@ -139,3 +139,6 @@ WCE o(n2)
 BCE nlog(n)
 
 array=[int(element)]
+
+
+
