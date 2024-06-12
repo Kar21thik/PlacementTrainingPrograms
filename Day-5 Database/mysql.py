@@ -1,14 +1,20 @@
 import pymysql
 
+# Function to connect to the MySQL server
 def connect_to_server():
-    conn = pymysql.connect(
-        host="localhost",
-        user="root",
-        password="Karthi21@2120",
-        port=3306
-    )
-    return conn
- 
+    try:
+        conn = pymysql.connect(
+            host="localhost",
+            user="root",
+            password="Karthi21@2120",
+            port=3306
+        )
+        return conn
+    except pymysql.MySQLError as e:
+        print(f"Connection to server failed: {e}")
+        return None
+
+# Function to create the database if it doesn't exist
 def create_database(connection):
     try:
         cursor = connection.cursor()
@@ -20,16 +26,22 @@ def create_database(connection):
     finally:
         cursor.close()
 
+# Function to connect to the specific database
 def connect_to_database():
-    conn = pymysql.connect(
-        host="localhost",
-        user="root",
-        password="Karthi21@2120",
-        db="office",
-        port=3306
-    )
-    return conn
+    try:
+        conn = pymysql.connect(
+            host="localhost",
+            user="root",
+            password="Karthi21@2120",
+            db="office",
+            port=3306
+        )
+        return conn
+    except pymysql.MySQLError as e:
+        print(f"Connection to database failed: {e}")
+        return None
 
+# Function to create the games table if it doesn't exist
 def create_table(connection):
     try:
         cursor = connection.cursor()
@@ -51,6 +63,7 @@ def create_table(connection):
     finally:
         cursor.close()
 
+# Function to insert a row into the games table
 def insert_row(connection, name, price, num_players, max_players, description):
     try:
         cursor = connection.cursor()
@@ -66,6 +79,7 @@ def insert_row(connection, name, price, num_players, max_players, description):
     finally:
         cursor.close()
 
+# Function to read and print all game data from the games table
 def read_game_data(connection):
     try:
         cursor = connection.cursor()
@@ -79,42 +93,142 @@ def read_game_data(connection):
     finally:
         cursor.close()
 
-try:
-    # Establish the connection to the server
-    server_connection = connect_to_server()
-    print("Connected to server")
+# Function to update a row in the games table
+def update_row(connection, game_id, name, price, num_players, max_players, description):
+    try:
+        cursor = connection.cursor()
+        update_query = """
+        UPDATE games
+        SET name = %s, price = %s, num_players = %s, max_players = %s, description = %s
+        WHERE id = %s
+        """
+        cursor.execute(update_query, (name, price, num_players, max_players, description, game_id))
+        connection.commit()
+        print("Row updated successfully")
+    except pymysql.MySQLError as e:
+        print(f"Failed to update row: {e}")
+    finally:
+        cursor.close()
 
-    # Create the database
-    create_database(server_connection)
+# Function to delete a row from the games table
+def delete_row(connection, game_id):
+    try:
+        cursor = connection.cursor()
+        delete_query = "DELETE FROM games WHERE id = %s"
+        cursor.execute(delete_query, (game_id,))
+        connection.commit()
+        print("Row deleted successfully")
+    except pymysql.MySQLError as e:
+        print(f"Failed to delete row: {e}")
+    finally:
+        cursor.close()
 
-    # Close the server connection
-    server_connection.close()
-    print("Server connection closed")
+# Function to search for a game by ID
+def search_by_id(connection, game_id):
+    try:
+        cursor = connection.cursor()
+        search_query = "SELECT * FROM games WHERE id = %s"
+        cursor.execute(search_query, (game_id,))
+        row = cursor.fetchone()
+        if row:
+            print(row)
+        else:
+            print("No game found with the provided ID")
+    except pymysql.MySQLError as e:
+        print(f"Failed to search for game: {e}")
+    finally:
+        cursor.close()
 
-    # Establish the connection to the database
-    database_connection = connect_to_database()
-    print("Connected to database")
+def main():
+    try:
+        # Establish the connection to the server
+        server_connection = connect_to_server()
+        if server_connection:
+            print("Connected to server")
 
-    # Create the table
-    create_table(database_connection)
+            # Create the database
+            create_database(server_connection)
 
-    # Get user input for a new game entry
-    name = input("Enter the game name: ")
-    price = float(input("Enter the game price: "))
-    num_players = int(input("Enter the number of players: "))
-    max_players = int(input("Enter the maximum number of players: "))
-    description = input("Enter the game description: ")
+            # Close the server connection
+            server_connection.close()
+            print("Server connection closed")
 
-    # Insert a row into the games table
-    insert_row(database_connection, name, price, num_players, max_players, description)
+        # Establish the connection to the database
+        database_connection = connect_to_database()
+        if database_connection:
+            print("Connected to database")
 
-    # Read and print game data
-    print("Reading game data:")
-    read_game_data(database_connection)
+            # Create the table
+            create_table(database_connection)
 
-    # Close the database connection
-    database_connection.close()
-    print("Database connection closed successfully")
+            while True:
+                print("\nMenu:")
+                print("1. Insert a new game")
+                print("2. Update an existing game")
+                print("3. Read game data")
+                print("4. Delete a game")
+                print("5. Search for a game by ID")
+                print("6. Exit")
 
-except pymysql.MySQLError as e:
-    print(f"Connection failed: {e}")
+                choice = input("Enter your choice: ")
+
+                if choice == "1":
+                    # Get user input for a new game entry
+                    name = input("Enter the game name: ")
+                    price = float(input("Enter the game price: "))
+                    num_players = int(input("Enter the number of players: "))
+                    max_players = int(input("Enter the maximum number of players: "))
+                    description = input("Enter the game description: ")
+
+                    # Insert a row into the games table
+                    insert_row(database_connection, name, price, num_players, max_players, description)
+
+                elif choice == "2":
+                    # Get user input for updating an existing game entry
+                    game_id = int(input("Enter the game ID to update: "))
+                    new_name = input("Enter the new game name: ")
+                    new_price = float(input("Enter the new game price: "))
+                    new_num_players = int(input("Enter the new number of players: "))
+                    new_max_players = int(input("Enter the new maximum number of players: "))
+                    new_description = input("Enter the new game description: ")
+
+                    # Update the row in the games table
+                    update_row(database_connection, game_id, new_name, new_price, new_num_players, new_max_players, new_description)
+
+                elif choice == "3":
+                    # Read and print game data
+                    print("Reading game data:")
+                    read_game_data(database_connection)
+
+                elif choice == "4":
+                    # Get user input for deleting a game
+                    game_id = int(input("Enter the game ID to delete: "))
+
+                    # Delete the row from the games table
+                    delete_row(database_connection, game_id)
+
+                elif choice == "5":
+                    # Get user input for searching a game by ID
+                    game_id = int(input("Enter the game ID to search: "))
+
+                    # Search for the game by ID
+                    search_by_id(database_connection, game_id)
+
+                elif choice == "6":
+                    # Exit the program
+                    print("Exiting...")
+                    break
+
+                else:
+                    print("Invalid choice. Please try again.")
+
+            # Close the database connection
+            database_connection.close()
+            print("Database connection closed successfully")
+
+    except pymysql.MySQLError as e:
+        print(f"Connection failed: {e}")
+
+if __name__ == "__main__":
+    main()
+
