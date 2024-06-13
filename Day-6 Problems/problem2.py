@@ -25,4 +25,6 @@ arr = [7, 2, 5, 3, 5, 3]
 brr = [7, 2, 5, 4, 6, 3, 5, 3]
 
 result = missing_numbers(arr, brr)
-print(result)  # Output: [4, 6]
+print(result)  
+
+

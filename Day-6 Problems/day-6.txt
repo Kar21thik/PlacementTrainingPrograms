@@ -17,7 +17,5 @@ the 1st element in y array is arrar[0]
 the last element in x is array[y-1]
 
 N=11
-
 2   5   17  28  35  66  80  91  99  125  147    
 
-last ias s
