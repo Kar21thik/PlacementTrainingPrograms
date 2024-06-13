@@ -1,0 +1,23 @@
+Read N
+Read N  elements of the array
+Read X and Y ( X+ Y must be =N)
+sort array
+p=array[y]-array[y-1]-1
+Assume we are dividing the Array into x[] and y[]
+all elements in x are greater than some p elements
+all ekement  in y are lesser than the same p elements
+how many such p eleemnts is possible
+
+
+we notice that the x elements are in increasing order and y elements small 
+
+so, 
+the 1st element in x is array[y]
+the 1st element in y array is arrar[0]
+the last element in x is array[y-1]
+
+N=11
+
+2   5   17  28  35  66  80  91  99  125  147    
+
+last ias s
