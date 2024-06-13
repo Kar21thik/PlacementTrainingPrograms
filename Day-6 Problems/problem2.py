@@ -9,9 +9,9 @@ def missing_numbers(arr, brr):
     missing = []
     
     # Iterate over the items in count_brr
-    for num in count_brr:
+    for num in count_arr:
         # If the count of num in brr is greater than in arr
-        if count_brr[num] > count_arr.get(num, 0):
+        if count_arr[num] > count_brr.get(num, 0):
             # Add the number to the missing list
             missing.append(num)
     
@@ -21,8 +21,8 @@ def missing_numbers(arr, brr):
     return missing
 
 # Example usage:
-arr = [7, 2, 5, 3, 5, 3]
-brr = [7, 2, 5, 4, 6, 3, 5, 3]
+arr = list(map(int,input("Enter the elements of first array").split(",")))
+brr = list(map(int,input("Enter the elements of second array").split(",")))
 
 result = missing_numbers(arr, brr)
 print(result)  
