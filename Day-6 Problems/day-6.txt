@@ -17,5 +17,25 @@ the 1st element in y array is arrar[0]
 the last element in x is array[y-1]
 
 N=11
-2   5   17  28  35  66  80  91  99  125  147    
+2   5   17  28  35  66  80  91  99  125  147  
+
+
+b(reak) : Sets a breakpoint at the current line.
+cl(ear) : Removes all breakpoints.
+c(ontinue) : Continues execution until the next breakpoint.
+d(own) : Steps into a function call one level.
+d(ump) : Prints the current stack frame.
+j(ump) : Jumps to the specified line number.
+h(elp) : Prints help on commands.
+r(un) : Runs until the next breakpoint.
+p(rint) : Prints the value of the expression.
+w(here) : Prints the current stack frame.
+k(ill) : Exits the debugger.
+l(ist) : Prints the current stack frame.
+p(rint) : Prints the value of the expression.
+q(uit) : Exits the debugger.
+r(epeat) : Repeats the current command.
+s(tep) : Steps into a function call one level.
+u(p) :  Steps out of a function call one level.
+t(op) : Steps over a function call one level.
 
