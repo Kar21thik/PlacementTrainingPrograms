@@ -6,3 +6,78 @@ take deference
 assume difference as number is taken earlier
 
 
+Key Concepts of Binary Trees
+Basic Terminology
+Node: A basic unit of a binary tree containing data, a left child, and a right child.
+Root: The topmost node of a binary tree.
+Leaf: A node with no children.
+Internal Node: A node with at least one child.
+Height: The number of edges on the longest path from the node to a leaf.
+Depth: The number of edges from the root to the node.
+Subtree: A tree consisting of a node and its descendants.
+Types of Binary Trees
+Full Binary Tree: Every node has either 0 or 2 children.
+Perfect Binary Tree: All internal nodes have two children, and all leaves are at the same level.
+Complete Binary Tree: All levels are completely filled except possibly for the last level, which is filled from left to right.
+Balanced Binary Tree: The height of the left and right subtrees of any node differ by at most one.
+Degenerate (or Pathological) Tree: Each parent node has only one child, making it appear like a linked list.
+Binary Search Tree (BST)
+A Binary Search Tree is a binary tree with the following properties:
+
+The left subtree of a node contains only nodes with values less than the node’s value.
+The right subtree of a node contains only nodes with values greater than the node’s value.
+Both left and right subtrees must also be binary search trees.
+Operations on Binary Trees
+Insertion: Adding a node to the binary tree.
+
+Deletion: Removing a node from the binary tree.
+
+Traversal: Visiting all nodes in a specific order.
+
+In-order Traversal: Left, Root, Right.
+Pre-order Traversal: Root, Left, Right.
+Post-order Traversal: Left, Right, Root.
+Level-order Traversal: Visit nodes level by level from top to bottom.
+Search: Finding a node in the binary tree.
+
+
+In all the 3 trasvesals , Left come before Right.
+
+while performing any action on a binary tree we can observe that the same action is perfomermed on arrrival of every new node,Thus action we performed on the root of the tree is same action performed reaching new child node in the tree 
+so while solving problems on the binary tree, on reaching a new node we must consider itself as the root of the tree and its descendants as the a new tree , thuis gives us a vlue that the solution is RECURSIVE IN NATURE 
+
+
+The nodes and thus the Tree that is formed with the Left child of any Node in the tree , is daid to be Left sub tree  node and on same lines , we also can recognize the RIGHT SUB TREE 
+
+# Adding the node into a BST :
+A new node is always added as a Leaf Node.
+# Deleting a node from a BST :
+1) node with 0 Child node( leaf nodes): Make the respective link of its parent node , None/Null
+2) Node with 1 child : Make the child of the node being deleted ,as the chold node  of its parent in the same position as it was with its parent
+3) Deleting a Node with 2 Children : when a node to be deleted in BST is having 2 child node then make the right child of the node being deleted as of its parent.the left child and its descendantssh
+
+
+
+
+*write a progrma to reverse a SLL using 
+1) iterativemethod  2) recursive
+
+*merge 2 osrted SLL into one 
+
+*SOrt a SLL using Bubble sort 
+
+*Cjeck if 2 SLL's COnverge at some pointinto a single list 
+
+***creat a AVL tree and 2-3 tree with the user givemn data
+
+***Balance a BST
+
+***implement the following operations on A BST
+1. add new NOde
+2. Delete a NOde ( all the 3 possiblity must be implemented)
+traverse the tree ien :
+1) inorder 
+2) preorder
+3) postorder
+
+***given  2 traversal of a BST , Create tthe Tree 
